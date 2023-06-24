@@ -21,7 +21,7 @@ Read or watch:
 
 * [tests](./tests): Folder of test files. 
 
-## Helper Files :raised_hands:
+## Helper Files :wink:
 
 * [print_array.c](./print_array.c): C function that prints an array of integers. 
 * [print_list.c](./print_list.c): C function that prints a `listint_t` doubly-linked list. 
