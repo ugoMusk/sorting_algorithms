@@ -174,5 +174,6 @@ Function Prototype:
 
 ### Authors:
 
-[ThankGod UGOBO](./)
-[Idris Adebowale](./)
+[ThankGod UGOBO](https://github.com/ugoMusk)
+
+[Idris Adebowale](https://github.com/Idris01) :https://avatars.githubusercontent.com/u/26111414?v=4:
