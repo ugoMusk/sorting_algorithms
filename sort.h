@@ -27,10 +27,10 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void insert_behind(listint_t *node, listint_t *key);
 listint_t *pop_node(listint_t *key);
-void swap(int *a, int *b);
+void swap(int *array, size_t x, size_t y);
 void select_swap(int *array, size_t x, size_t y);
 void quick_swap(int *array, size_t x, size_t y);
 size_t get_partition(int *array, size_t size, int start, int end);
-void do_quick_sort(int *arr, int first, int last,size_t size);
+void do_quick_sort(int *array, size_t size, size_t start, size_t end);
 
 #endif
