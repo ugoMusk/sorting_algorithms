@@ -25,8 +25,26 @@ void selection_sort(int *array, size_t size)
 		}
 		if (array[min_idx] > array[found_min])
 		{
-			swap(array, min_idx, found_min);
+			select_swap(array, min_idx, found_min);
 			print_array(array, size);
 		}
 	}
+}
+
+
+/**
+ * select_swap - Swaps two items in a given array
+ * @array: array of integer
+ * @x: index of first item
+ * @y: index of second item
+ *
+ * Return: always void
+ */
+void select_swap(int *array, size_t x, size_t y)
+{
+	int temp;
+
+	temp = array[x];
+	array[x] = array[y];
+	array[y] = temp;
 }
