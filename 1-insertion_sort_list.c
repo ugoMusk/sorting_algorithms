@@ -1,94 +1,53 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - Insertion sorted_tail algoithm with
- * doubly linked list
- * @list : pointer to address of doubly linked list to
- * be sorted_tailed
- *
- * Return: always void
+ * swap_nodes - Swaps two nodes
+ * @node1: Pointer to address of node 1
+ * @node2: Pointer to address of node 2
+ * @list:  something terifying
+ * Return: Nothing
+ */
+void swap_nodes(listint_t **list, listint_t **node1, listint_t **node2)
+{
+	listint_t *tmp = (*node1)->prev;
+
+	(*node1)->next = (*node2)->next;
+
+	if ((*node2)->next != NULL)
+		(*node2)->next->prev = *node1;
+
+	(*node1)->prev = *node2;
+	(*node2)->next = *node1;
+	(*node2)->prev = tmp;
+
+	if ((*node2)->prev != NULL)
+		(*node2)->prev->next = *node2;
+	else
+		*list = *node2;
+}
+
+/**
+ * insertion_sort_list - Sorts a doubly linked list using Insertion Sort
+ * @list: Pointer to head of the linked list
+ * Return: Nothing
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t  *temp, *key, *sorted_tail;
+	listint_t *actual = NULL, *key = NULL;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
+	if (!list || !(*list))
 		return;
 
-	key = (*list)->next;  /* initialize key as second node of list */
-
-	for (sorted_tail = *list; key != NULL; key = sorted_tail->next)
+	for (actual = *list; actual != NULL; actual = actual->next)
 	{
-		if (sorted_tail->n <= key->n)
+		while (actual->next != NULL && actual->n > actual->next->n)
 		{
-			sorted_tail = sorted_tail->next;
-			key = sorted_tail->next;
-			continue;
-		}
-
-		temp = sorted_tail; /* initialize iterator temp */
-
-		while (1)  /* insertion loop with temp as iterator */
-		{
-			if (temp->prev == NULL)  /* insert at beginning */
+			key = actual->next;
+			while (key->prev != NULL && key->n < key->prev->n)
 			{
-				(*list) = pop_node(key);
-				key->next = temp;
-				key->prev = NULL;
-				temp->prev = key;
-				print_list(*list);
-				break;
-			}
-			else if (temp->n > key->n)
-			{
-				insert_behind(temp->prev, pop_node(key));
-				temp = key->prev;
+				swap_nodes(list, &key->prev, &key);
 				print_list(*list);
 			}
-			else  /* key already placed in right position */
-				break;
 		}
 	}
-}
-
-
-/**
- * insert_behind - Place a node "key" at the back of
- * another node "node" of doubly linked list
- * @node : pointer to first node in front of key
- * @key : pointer to second node placed after node
- *
- * Return: always void
- */
-void insert_behind(listint_t *node, listint_t *key)
-{
-	listint_t *nxt;
-
-	if (node == NULL || key == NULL)
-		return;
-	nxt = node->next;
-	key->next = nxt;
-	key->prev = node;
-	node->next = key;
-	nxt->prev = key;
-}
-
-/**
- * pop_node - Remove given node of a linked list
- * @key: pointer to node to remove
- *
- * Return: address of removed node
- */
-listint_t *pop_node(listint_t *key)
-{
-	listint_t *prv = NULL, *nxt = NULL;
-
-	prv = key->prev;
-	nxt = key->next;
-	if (prv != NULL)
-		prv->next = nxt;
-	if (nxt != NULL)
-		nxt->prev = prv;
-
-	return (key);
 }
