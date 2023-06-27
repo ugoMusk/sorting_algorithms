@@ -58,7 +58,7 @@ size_t get_partition(int *array, size_t size, int start, int end)
 			hi--;
 		while (array[lo] < array[piv_idx] && lo < size)
 			lo++;
-		if (hi > lo)
+		if (hi > lo && array[hi] != array[lo])
 		{
 			quick_swap(array, hi, lo);
 			print_array(array, size);
@@ -66,7 +66,7 @@ size_t get_partition(int *array, size_t size, int start, int end)
 				return (lo);
 		}
 	}
-	if (lo >= hi && lo != piv_idx)
+	if (lo >= hi && lo != piv_idx && array[lo] != array[piv_idx])
 	{
 		quick_swap(array, lo, piv_idx);
 		print_array(array, size);
