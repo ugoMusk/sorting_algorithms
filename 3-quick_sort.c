@@ -15,11 +15,11 @@ void quick_sort(int *array, size_t size)
 		return;
 	end = size - 1;
 	start = 0;
-	sort_it(array, size, start, end);
+	do_quick_sort(array, size, start, end);
 }
 
 /**
- * sort_it - Recursively Sort an array with quicksort algorithm
+ * do_quick_sort - Recursively Sort an array with quicksort algorithm
  * @array: pointer to array to sort
  * @size: size of array
  * @start: start index of array
@@ -27,7 +27,7 @@ void quick_sort(int *array, size_t size)
  *
  * Return: always void
  */
-void sort_it(int *array, size_t size, size_t start, size_t end)
+void do_quick_sort(int *array, size_t size, size_t start, size_t end)
 {
 	size_t partition;
 
@@ -35,8 +35,8 @@ void sort_it(int *array, size_t size, size_t start, size_t end)
 		return;
 	partition = get_partition(array, size, start, end);
 	if (partition != 0)
-		sort_it(array, size, start, partition - 1);
-	sort_it(array, size, partition + 1, end);
+		do_quick_sort(array, size, start, partition - 1);
+	do_quick_sort(array, size, partition + 1, end);
 }
 
 /**
