@@ -54,9 +54,9 @@ size_t get_partition(int *array, size_t size, int start, int end)
 
 	while (lo < hi)
 	{
-		while (array[hi] >= array[piv_idx] && hi > 0)
+		while (hi > 0 && array[hi] >= array[piv_idx])
 			hi--;
-		while (array[lo] < array[piv_idx] && lo < size)
+		while (lo < size - 1 && array[lo] < array[piv_idx])
 			lo++;
 		if (hi > lo && array[hi] != array[lo])
 		{
