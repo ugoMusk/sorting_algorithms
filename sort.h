@@ -24,9 +24,6 @@ typedef struct listint_s
 
 void bubble_sort(int *array, size_t size);
 void swap_ints(int *a, int *b);
-void swap(int *a, int *b);
-swap_list(listint_t *p, listint_t *c, listint_t *list);
-void swap_items(int *array, size_t x, size_t y);
 void insertion_sort_list(listint_t **list);
 void swap_nodes(listint_t **list, listint_t **node1, listint_t **node2);
 void selection_sort(int *array, size_t size);
@@ -40,17 +37,9 @@ void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 void counting_sort(int *array, size_t size);
 void merge_sort(int *array, size_t size);
-void prints(int *arr, char *side, size_t start, size_t end);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
-
-/* Sort Deck Cards */
-int _strcmp(const char *s1, const char *s2);
-char get_value(deck_node_t *card);
-void insertion_sort_deck_kind(deck_node_t **deck);
-void insertion_sort_deck_value(deck_node_t **deck);
-void sort_deck(deck_node_t **deck);
 
 #endif
